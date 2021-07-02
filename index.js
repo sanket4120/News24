@@ -1,4 +1,5 @@
 const axios = require('axios');
+const path = require('path');
 const express = require('express');
 const app = express();
 require('dotenv').config();
@@ -24,3 +25,12 @@ app.get('/news', async (req, res) => {
 app.listen(PORT, () => {
   console.log(`server started on port ${PORT}`);
 });
+
+//serve static assets in production
+if (process.env.NODE_ENV === 'production') {
+  //set static folder
+  app.use(express.static('frontend/build'));
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'));
+  });
+}
