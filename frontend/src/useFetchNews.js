@@ -46,7 +46,6 @@ export default function GetJobs(search, page, pageSize) {
         dispatch({ type: actions.GET_DATA, payload: { data: res.data } });
       })
       .catch((e) => {
-        console.log(e);
         dispatch({ type: actions.ERROR, payload: { error: e } });
       });
   }, [search, page]);

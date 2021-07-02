@@ -7,14 +7,13 @@ const PORT = process.env.PORT || 5000;
 
 app.get('/news', async (req, res) => {
   try {
-    console.log(req.query);
     const result = await axios.get('https://newsapi.org/v2/everything', {
       params: {
         ...req.query,
         apiKey: process.env.API_KEY,
       },
     });
-    console.log('Got response');
+    res.send(result.data);
   } catch (error) {
     res
       .status(500)

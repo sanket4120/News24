@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import NewsArticle from './NewsArticle';
 import useFetchNews from '../useFetchNews';
+import Searchbar from './Searchbar';
 import Loading from './Loading';
 import Error from './Error';
 
@@ -13,6 +14,7 @@ function News() {
   return (
     <div className='container'>
       <h1 id='title'>News24 📰</h1>
+      <Searchbar setSearch={setSearch} search={search} setPage={setPage} />
 
       {!loading && !error && data.totalResults === 0 && (
         <div id='not__found'>
