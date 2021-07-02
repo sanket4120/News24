@@ -15,9 +15,9 @@ app.get('/news', async (req, res) => {
     });
     res.send(result.data);
   } catch (error) {
-    res
-      .status(500)
-      .json({ message: 'Error while getting news.Try again later.' });
+    res.status(500).json({
+      message: 'An error occured while getting news.Try again later.',
+    });
   }
 });
 

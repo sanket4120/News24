@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import NewsArticle from './NewsArticle';
 import useFetchNews from '../useFetchNews';
 import Searchbar from './Searchbar';
+import Pagination from './Pagination';
 import Loading from './Loading';
 import Error from './Error';
 
@@ -15,6 +16,15 @@ function News() {
     <div className='container'>
       <h1 id='title'>News24 📰</h1>
       <Searchbar setSearch={setSearch} search={search} setPage={setPage} />
+
+      {!loading && !error && data.totalResults > 0 && (
+        <Pagination
+          page={page}
+          setPage={setPage}
+          totalResults={data.totalResults}
+          pageSize={pageSize}
+        />
+      )}
 
       {!loading && !error && data.totalResults === 0 && (
         <div id='not__found'>
@@ -35,6 +45,15 @@ function News() {
             <NewsArticle key={article.url} article={article} />
           ))}
       </div>
+
+      {!loading && !error && data.totalResults > 0 && (
+        <Pagination
+          page={page}
+          setPage={setPage}
+          totalResults={data.totalResults}
+          pageSize={pageSize}
+        />
+      )}
     </div>
   );
 }

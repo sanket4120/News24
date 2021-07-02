@@ -12,7 +12,7 @@ function Searchbar({ search, setSearch, setPage }) {
       <div className='row'>
         <input
           type='text'
-          placeholder='Search by keyword'
+          placeholder='Search by keyword...'
           value={q}
           onChange={(e) => setQ(e.target.value)}
         />

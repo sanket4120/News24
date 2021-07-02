@@ -38,7 +38,6 @@ export default function GetJobs(search, page, pageSize) {
           page: page,
           q: keyword,
           pageSize: pageSize,
-          sortBy: 'popularity',
           language: 'en',
         },
       })
@@ -46,7 +45,10 @@ export default function GetJobs(search, page, pageSize) {
         dispatch({ type: actions.GET_DATA, payload: { data: res.data } });
       })
       .catch((e) => {
-        dispatch({ type: actions.ERROR, payload: { error: e } });
+        dispatch({
+          type: actions.ERROR,
+          payload: { error: e.response.data.message },
+        });
       });
   }, [search, page]);
 

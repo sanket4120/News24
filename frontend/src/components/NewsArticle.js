@@ -9,9 +9,6 @@ function NewsArticle({ article }) {
 
   return (
     <div className='article'>
-      <div className='article__image'>
-        {/* <img src={article.urlToImage} alt='article_image' /> */}
-      </div>
       <div className='article__body'>
         <p className='article__published'>{publishedAt}</p>
         <h3 className='article__title'>
